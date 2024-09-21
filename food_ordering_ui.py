@@ -23,7 +23,7 @@ def show_main_menu():
     elif user_menu_choice in 'Nn':
       print('New order')
       make_order(user_menu_choice.upper(),order)  #calls a function for adding to the orders
-     elif user_menu_choice in 'Cc':
+    elif user_menu_choice in 'Cc':
       print('Modify your current order:')
       order = modify_order(user_menu_choice.upper(),order)  # Modify the existing order
     elif user_menu_choice in 'Pp':
