@@ -2,6 +2,7 @@
 import data
 import functions
 def show_main_menu():
+  order = []
   while True:
     print("Sai Dinner") #edit to show your name
     print("__________")
@@ -83,6 +84,7 @@ if __name__ == '__main__':
     salads = []
     entrees = []
     dessert= []
+    order = []
     #print(functions.get_item_information('D1'))
     show_main_menu()
 

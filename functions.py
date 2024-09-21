@@ -23,10 +23,15 @@ def get_item_number():
   while True:
    display_items()
    order_item = input('Enter dish number and quantity: ')
-   if order_item.split()[0] in data.all_items:
-    return order_item
+   parts = order_item.split()
+   if len(parts) == 2:  # Check if there are exactly two parts
+      item_code, quantity = parts
+      if item_code in data.all_items and quantity.isdigit():  # Check if item code is valid and quantity is a digit
+         return item_code, int(quantity)  # Return the item code and quantity as integer
+      else:
+         print("Invalid dish number or quantity. Please try again.")
    else:
-    print('Invalid dish number.  Please try again')
+     print("Please enter both dish number and quantity, separated by a space.")
 
 def print_check(order):
     print("\nYour Order Summary:")
