@@ -50,4 +50,12 @@ def print_check(order):
 
 def reset_order():
   print("your order has been reset.")
-  return[]
+  return[] 
+
+def display_current_order(order):
+    if not order:
+        print("Your order is empty.")
+        return
+    print("\nCurrent Order:")
+    for idx, (item_name, item_price, quantity) in enumerate(order, start=1):
+        print(f"{idx}. {item_name} (x{quantity}) - ${item_price * quantity:.2f}")
