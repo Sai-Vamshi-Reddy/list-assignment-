@@ -22,9 +22,8 @@ def display_items():
 def get_item_number():
   while True:
    display_items()
-    #write code for displaying the other dishes also
-  order_item = input('Enter dish number and quantity: ')
-  if order_item.split()[0] in data.all_items:
+   order_item = input('Enter dish number and quantity: ')
+   if order_item.split()[0] in data.all_items:
     return order_item
   else:
    print('Invalid dish number.  Please try again')

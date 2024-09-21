@@ -33,11 +33,43 @@ def show_main_menu():
         functions.print_check(order)
     else:
       print("Invalid input. Please try again.")
-def make_order(menu_choice):
+ 
+def make_order(menu_choice,order):
   print('Functionality for menu choice ', menu_choice)
-  user_selection = functions.get_item_number()
-  item_code, quantity = user_selection.split()
-  print(functions.get_item_information(item_code))
+  while True:
+   user_selection = functions.get_item_number()
+   if user_selection:
+      item_code, quantity = user_selection.split()
+      item_name, item_price = functions.get_item_information(item_code)
+      order.append((item_name, item_price, int(quantity)))
+      print(f"Added {quantity} of {item_name} to your order.")
+      continue_order = input("Would you like to add more items? (Y/N): ").upper()
+   if continue_order == 'N':
+      break
+  return order
+ 
+
+def modify_order(menu_choice,order):
+    print('Functionality for menu choice ', menu_choice)
+    if not order:
+        print("Your order is empty. Please add items first.")
+        return order
+    
+    functions.display_current_order(order)
+    while True:
+        item_to_remove = int(input("Enter the item number you want to remove (0 to cancel): "))
+        if item_to_remove == 0:
+            break
+        elif 1 <= item_to_remove <= len(order):
+            removed_item = order.pop(item_to_remove - 1)
+            print(f"Removed {removed_item[0]} from your order.")
+        else:
+            print("Invalid item number.")
+        
+        more_changes = input("Would you like to remove more items? (Y/N): ").upper()
+        if more_changes == 'N':
+            break
+    return order
 
 def close_order(menu_choice):
   print('Functionality for menu choice ', menu_choice)
