@@ -40,7 +40,7 @@ def make_order(menu_choice, order):
   while True:
    user_selection = functions.get_item_number()
    if user_selection:
-      item_code, quantity = user_selection.split()
+      item_code, quantity = user_selection
       item_name, item_price = functions.get_item_information(item_code)
       order.append((item_name, item_price, int(quantity)))
       print(f"Added {quantity} of {item_name} to your order.")
